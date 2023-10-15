@@ -1,3 +1,4 @@
+/* Base Styles */
 .App {
   text-align: center;
 }
@@ -37,8 +38,17 @@ h2 {
   margin-bottom: 20px;
 }
 
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .vault,
+  .SetPwd {
+    margin: 10px;
+  }
+}
+
+/* SignInButton Styles */
 .SignInButton {
-  background-color: #4285f4; /* Google Blue */
+  background-color: #4285f4;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -52,13 +62,15 @@ h2 {
   background-color: #357ae8;
 }
 
+/* SetPwd Styles */
 .SetPwd {
   background-color: #333;
   color: #fff;
   padding: 50px;
-  border-radius: 10px;
+  border-radius: 0; /* Remove border-radius */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  width: 500px;
+  width: 100%;
+  max-width: 70vw; /* Change to a maximum width */
   margin: 0 auto;
 }
 
@@ -87,6 +99,7 @@ input {
   cursor: pointer;
 }
 
+/* Vault Styles */
 .vault {
   background-color: #f4f4f4;
   padding: 20px;
@@ -94,8 +107,9 @@ input {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: inline-block;
   text-align: center;
-  width: 500px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 70vw; /* Change to a maximum width */
+  margin: 10px auto; /* Added margin and centered */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -168,9 +182,21 @@ header {
   padding: 10px 20px;
   background-color: #191919;
   color: white;
+  max-width: 100%;
   margin: 0px 0px 10px 0px;
 }
 
 h1 {
   text-align: center;
+}
+
+/* Media query for larger screens (desktop) */
+@media (min-width: 1024px) {
+  .SetPwd {
+    width: 500px; /* Adjust width for desktop screens */
+  }
+
+  .vault {
+    width: 500px; /* Adjust width for desktop screens */
+  }
 }
