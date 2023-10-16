@@ -1,4 +1,3 @@
-/* Base Styles */
 .App {
   text-align: center;
 }
@@ -38,7 +37,6 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* Responsive Styles */
 @media screen and (max-width: 768px) {
   .vault,
   .SetPwd {
@@ -46,7 +44,6 @@ h2 {
   }
 }
 
-/* SignInButton Styles */
 .SignInButton {
   background-color: #4285f4;
   color: #fff;
@@ -62,15 +59,14 @@ h2 {
   background-color: #357ae8;
 }
 
-/* SetPwd Styles */
 .SetPwd {
   background-color: #333;
   color: #fff;
   padding: 50px;
-  border-radius: 0; /* Remove border-radius */
+  border-radius: 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   width: 100%;
-  max-width: 70vw; /* Change to a maximum width */
+  max-width: 70vw;
   margin: 0 auto;
 }
 
@@ -99,7 +95,6 @@ input {
   cursor: pointer;
 }
 
-/* Vault Styles */
 .vault {
   background-color: #f4f4f4;
   padding: 20px;
@@ -108,8 +103,8 @@ input {
   display: inline-block;
   text-align: center;
   width: 100%;
-  max-width: 70vw; /* Change to a maximum width */
-  margin: 10px auto; /* Added margin and centered */
+  max-width: 70vw;
+  margin: 10px auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -190,13 +185,12 @@ h1 {
   text-align: center;
 }
 
-/* Media query for larger screens (desktop) */
 @media (min-width: 1024px) {
   .SetPwd {
-    width: 500px; /* Adjust width for desktop screens */
+    width: 500px;
   }
 
   .vault {
-    width: 500px; /* Adjust width for desktop screens */
+    width: 500px;
   }
 }

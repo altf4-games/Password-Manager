@@ -258,7 +258,6 @@ function PasswordDiv() {
   const [data, setData] = useState([]);
   const [masterPassword, setMasterPassword] = useState(null);
 
-  // Retrieve the master password
   useEffect(() => {
     async function fetchMasterPassword() {
       const userMasterPassword = await retrieveMasterPassword(
@@ -270,21 +269,16 @@ function PasswordDiv() {
   }, []);
 
   useEffect(() => {
-    const userId = auth.currentUser.uid; // Replace with your authentication logic
+    const userId = auth.currentUser.uid;
     const docRef = doc(db, "users", userId);
 
-    // Create a function to update the data
     const updateData = (docSnap) => {
       if (docSnap.exists()) {
         const jsonData = docSnap.data().jsonArrayField;
         setData(jsonData);
       }
     };
-
-    // Subscribe to changes using onSnapshot
     const unsubscribe = onSnapshot(docRef, updateData);
-
-    // Cleanup the listener when the component unmounts
     return () => {
       unsubscribe();
     };
@@ -294,24 +288,19 @@ function PasswordDiv() {
     const userId = auth.currentUser.uid;
     const userRef = doc(db, "users", userId);
 
-    // Get the current data
     const userDoc = await getDoc(userRef);
     const userData = userDoc.data();
 
     if (userData) {
-      // Find the index of the item to delete in the jsonArrayField
       const itemIndex = userData.jsonArrayField.findIndex(
         (item) => item.site === siteToDelete
       );
 
       if (itemIndex !== -1) {
-        // Create a copy of the array without the item to delete
         const newArray = [
           ...userData.jsonArrayField.slice(0, itemIndex),
           ...userData.jsonArrayField.slice(itemIndex + 1),
         ];
-
-        // Update the document in Firestore with the modified array
         await updateDoc(userRef, {
           jsonArrayField: newArray,
         });
