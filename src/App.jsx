@@ -18,19 +18,19 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAxQDo-leupv8bbzBGra_EdZ7P7on708mk",
-  authDomain: "password-manager-pm.firebaseapp.com",
-  projectId: "password-manager-pm",
-  storageBucket: "password-manager-pm.appspot.com",
-  messagingSenderId: "112193590152",
-  appId: "1:112193590152:web:8494c6524247f4edffe03d",
+  apiKey: "AIzaSyB8i9HXB1EXAMPLEy5HhQ0lkHEXAMPLEF7w0",
+  authDomain: "your-app.firebaseapp.com",
+  projectId: "your-app-12345",
+  storageBucket: "your-app.appspot.com",
+  messagingSenderId: "1234567890",
+  appId: "1:1234567890:web:abc123def456",
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-function App() {
+const App = () => {
   const [user] = useAuthState(auth);
 
   return (
@@ -42,7 +42,7 @@ function App() {
       {user ? <PasswordManager /> : <SignIn />}
     </div>
   );
-}
+};
 
 const SignIn = () => {
   const signInWithGoogle = () => {
@@ -149,7 +149,7 @@ function VaultPassword({ setLoggedIn }) {
       </form>
     </div>
   );
-}
+};
 
 const PasswordForm = () => {
   const user = auth.currentUser.uid;
@@ -202,7 +202,7 @@ const PasswordForm = () => {
   );
 };
 
-function Vault() {
+const Vault = () => {
   const [site, setSite] = useState("");
   const [password, setPassword] = useState("");
 
@@ -252,9 +252,9 @@ function Vault() {
       <PasswordDiv></PasswordDiv>
     </div>
   );
-}
+};
 
-function PasswordDiv() {
+const PasswordDiv = () => {
   const [data, setData] = useState([]);
   const [masterPassword, setMasterPassword] = useState(null);
 
@@ -314,24 +314,24 @@ function PasswordDiv() {
       <ul>
         {data && Array.isArray(data) && data.length > 0
           ? data.map((item, index) => (
-              <div className="component-container" key={index}>
-                <p>
-                  Site: {item.site} Password:{" "}
-                  {decrypt(item.password, masterPassword)}
-                </p>
-                <button
-                  className="delete-button"
-                  onClick={() => deleteItem(item.site)}
-                >
-                  Delete
-                </button>
-              </div>
-            ))
+            <div className="component-container" key={index}>
+              <p>
+                Site: {item.site} Password:{" "}
+                {decrypt(item.password, masterPassword)}
+              </p>
+              <button
+                className="delete-button"
+                onClick={() => deleteItem(item.site)}
+              >
+                Delete
+              </button>
+            </div>
+          ))
           : null}
       </ul>
     </div>
   );
-}
+};
 
 const encrypt = (password, SECRET_KEY) => {
   const encrypted = CryptoJS.AES.encrypt(password, SECRET_KEY).toString();
@@ -363,7 +363,7 @@ const retrieveMasterPassword = async (userId) => {
   }
 };
 
-function generateRandomSecretKey(length) {
+const generateRandomSecretKey = (length) => {
   const charset =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let secretKey = "";
@@ -374,6 +374,6 @@ function generateRandomSecretKey(length) {
   }
 
   return secretKey;
-}
+};
 
 export default App;
