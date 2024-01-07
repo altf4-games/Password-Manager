@@ -101,7 +101,7 @@ const PasswordManager = () => {
   );
 };
 
-function VaultPassword({ setLoggedIn }) {
+const VaultPassword = ({ setLoggedIn })  => {
   const [masterPassword, setMasterPassword] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
